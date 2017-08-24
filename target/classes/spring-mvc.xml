@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 配置注解驱动的Spring MVC Controller 的编程模型.注:此标签只在 Servlet MVC工作! -->
+	<mvc:annotation-driven> 
+		<mvc:message-converters>   
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">   
+				<property name="supportedMediaTypes">   
+					<list>   
+						<value>text/plain;charset=UTF-8</value>   
+						<value>text/html;charset=UTF-8</value>   
+					</list>   
+				</property>   
+			</bean>    
+		</mvc:message-converters>   
+	</mvc:annotation-driven> 
+	
+	<context:component-scan base-package="com.xywallet.controller" />
+
+	<!-- 模板信息设置 -->  
+   <bean id="velocityConfigurer"  
+       class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">  
+       <property name="resourceLoaderPath"  value="/view" /><!-- 設置模板防止位置-->  
+       <property name="velocityProperties">  
+           <props>  
+               <prop key="directive.foreach.counter.name">loopCounter</prop>  
+               <prop key="directive.foreach.counter.initial.value">0</prop>  
+               <prop key="input.encoding">UTF-8</prop><!-- 指定模板引擎进行模板处理的编码 -->  
+               <prop key="output.encoding">UTF-8</prop><!-- 指定输出流的编码 -->  
+           </props>  
+       </property>  
+   </bean>  
+  
+	<!-- 设置视图解析工具 -->  
+   <bean id="viewResolver"  
+       class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
+       <!-- 避免乱码 -->  
+        <property name="cache" value="true" /> 
+        <property name="dateToolAttribute" value="date" /><!--日期函数名称-->  
+        <property name="numberToolAttribute" value="number" /><!--数字函数名称-->  
+        <property name="contentType" value="text/html;charset=UTF-8" />  
+        <property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持-->  
+        <property name="exposeRequestAttributes" value="true" /><!--是否开放request属性-->  
+        <property name="requestContextAttribute" value="rc"/><!--request属性引用名称-->  
+   </bean>   
+</beans>

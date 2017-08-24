@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>快捷支付网页版测试工程</title>
+</head>
+<body>
+	<a href="${rc.contextPath}">支付</a>
+	<a href="${rc.contextPath}/query">订单查询</a>
+	<form name="direct" action="${rc.contextPath}/doQuery" method="post" target="_blank">
+		<table width="100%" border="0">
+			<tr>
+				<th colspan="2" scope="col">&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="2" height="2" bgcolor="#ff7300"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">商户订单编号:</td>
+				<td width="76%"><input type="text" name="mchTradeNo" id="mchTradeNo"
+					value="test123123">商户订单编号和系统订单编号同时存在时,只取商户订单编号</td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">系统订单编号:</td>
+				<td width="76%"><input type="text" name="orderNo" id="orderNo"
+					value="1488944881579172730"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">appId：</td>
+				<td width="76%"><input type="text" name="appId" id="appId"
+					value="${appId}"></td>
+			</tr>
+
+			<tr>
+				<td align="right">操作：</td>
+				<td><input type="submit" name="submit" value="查询订单状态" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>

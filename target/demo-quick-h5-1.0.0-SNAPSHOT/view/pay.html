@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>快捷支付网页版测试工程</title>
+</head>
+<body>
+	<a href="${rc.contextPath}/pay">支付</a>
+	<a href="${rc.contextPath}/query">订单查询</a>
+	<form name="direct" id="direct" action="${rc.contextPath}/doPay" method="post" target="_blank">
+		<table width="100%" border="0">
+			<tr>
+				<th colspan="2" scope="col">&nbsp;</th>
+			</tr>
+			<tr>
+				<td colspan="2" height="2" bgcolor="#ff7300"></td>
+			</tr>
+				<tr>
+				<td width="24%" align="right">appId：</td>
+				<td width="76%"><input type="text" name="appId"
+					id="appId" value="${appId}" ></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">商品名称：</td>
+				<td width="76%"><input type="text" name="subject" id="subject"
+					value="test"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">商品价格：</td>
+				<td width="76%"><input type="text" name="tradeAmt"
+					id="tradeAmt" value="0.01"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">商户订单号：</td>
+				<td width="76%"><input type="text" name="mchTradeNo"
+					id="mchTradeNo" value="${mchTradeNo}"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">商品描述：</td>
+				<td width="76%"><input type="text" name="body" id="body"
+					value="body"></td>
+			</tr>
+
+			<tr>
+				<td width="24%" align="right">商户支付账户ID：</td>
+				<td width="76%"><input type="text" name="appUserName"
+					id="appUserName" value="test123"></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">所属银行：</td>
+				<td width="76%"><select name="bankCode">
+						<option value="ICBC">中国工商银行</option>
+						<option value="CITIC">中信银行</option>
+						<option value="BJRCB">北京农商银行</option>
+						<option value="ABC">中国农业银行</option>
+						<option value="CMB">招商银行</option>
+						<option value="CMBC">中国民生银行</option>
+						<option value="BJBANK">北京银行</option>
+						<option value="BOC">中国银行</option>
+						<option value="CEB">中国光大银行</option>
+						<option value="CIB">兴业银行</option>
+						<option value="NBBANK">宁波银行</option>
+						<option value="SDB">深圳发展银行</option>
+						<option value="HXBANK">华夏银行</option>
+						<option value="SPDB">浦发银行</option>
+						<option value="PSBC">中国邮政储蓄银行</option>
+						<option value="HZCB">杭州银行</option>
+						<option value="NJCB">南京银行</option>
+						<option value="COMM">交通银行</option>
+						<option value="CCB">中国建设银行</option>
+						<option value="GDB">广发银行</option>
+						
+				</select></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">证件类型：</td>
+				<td width="76%"><select name="certType">
+						<option value="01">身份证</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">证件号：</td>
+				<td width="76%"><input type="text" name="certNo"
+					id="certNo" value=""></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">银行卡号：</td>
+				<td width="76%"><input type="text" name="cardNo"
+					id="cardNo" value=""></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">银行卡账户名：</td>
+				<td width="76%"><input type="text" name="cardRealName"
+					id="cardRealName" value=""></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">手机号：</td>
+				<td width="76%"><input type="text" name="phone"
+					id="phone" value=></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">银行卡类型：</td>
+				<td width="76%"><select name="cardType">
+						<option value="01">借记卡</option>
+						<option value="02">贷记卡</option>
+						<option value="03">全部</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">CVV：</td>
+				<td width="76%"><input type="text" name="cvv"
+					id="cvv"> 银行卡类型为贷记卡必填</td> 
+			</tr>
+			<tr>
+				<td width="24%" align="right">有效期：</td>
+				<td width="76%"><input type="text" name="expireDate"
+					id="expireDate"> 格式:MMYY 例如0916;银行卡类型为贷记卡必填</td> 
+			</tr>
+			<tr>
+				<td width="24%" align="right">加密方式：</td>
+				<td width="76%"><select name="signMethod">
+						<option value="RSA">RSA秘钥</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="24%" align="right">returnUrl：</td>
+				<td width="76%"><input type="text" name="returnUrl"
+					id="returnUrl" style="width:400px;" value="http://www.sohu.com">(回调地址ip和端口需要更具测试地址更改)</td>
+			</tr>
+			
+			<tr>
+				<td width="24%" align="right">notifyUrl：</td>
+				<td width="76%"><input type="text" name="notifyUrl"
+					id="notifyUrl" style="width:400px;" value="${notifyUrl}">(回调地址ip和端口需要更具测试地址更改)</td>
+			</tr>
+			
+			<tr>
+				<td align="right">操作：</td>
+				<td><input type="submit" name="submit" value="一键支付" /></td>
+			</tr>
+
+		</table>
+	</form>
+</body>
+</html>
